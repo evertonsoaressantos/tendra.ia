@@ -1,0 +1,145 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+@import "shadcn/tailwind.css";
+@import "../styles/tokens.css";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --font-sans: var(--font-ibm-plex-sans);
+  --font-heading: var(--font-space-grotesk);
+  --font-mono: var(--font-ibm-plex-mono);
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-body: var(--text-body);
+  --color-sage: var(--brand-sage);
+  --color-ink: var(--brand-ink);
+  --color-lime: var(--brand-lime);
+  --color-paper: var(--brand-paper);
+  --color-compliance: var(--state-ink);
+  --radius-xs: var(--tdr-radius-xs);
+  --radius-sm: var(--tdr-radius-sm);
+  --radius-md: var(--tdr-radius-md);
+  --radius-lg: var(--tdr-radius-lg);
+  --radius-xl: var(--tdr-radius-xl);
+  --radius-2xl: var(--tdr-radius-2xl);
+  --radius-3xl: var(--tdr-radius-3xl);
+  --radius-4xl: var(--tdr-radius-3xl);
+  --shadow-overlay: var(--tdr-shadow-overlay);
+  --shadow-popover: var(--tdr-shadow-popover);
+  --color-sidebar: var(--card);
+  --color-sidebar-foreground: var(--foreground);
+  --color-sidebar-primary: var(--primary);
+  --color-sidebar-primary-foreground: var(--primary-foreground);
+  --color-sidebar-accent: var(--muted);
+  --color-sidebar-accent-foreground: var(--foreground);
+  --color-sidebar-border: var(--border);
+  --color-sidebar-ring: var(--ring);
+}
+
+:root {
+  --font-display: var(--font-space-grotesk);
+  --background: var(--surface-page);
+  --foreground: var(--text-strong);
+  --card: var(--surface-card);
+  --card-foreground: var(--text-body);
+  --popover: var(--surface-card);
+  --popover-foreground: var(--text-strong);
+  --primary: var(--action-primary-bg);
+  --primary-foreground: var(--action-primary-fg);
+  --primary-hover: var(--action-primary-bg-hover);
+  --secondary: var(--surface-sunken);
+  --secondary-foreground: var(--text-strong);
+  --muted: var(--surface-sunken);
+  --muted-foreground: var(--text-meta);
+  --accent: var(--surface-sunken);
+  --accent-foreground: var(--text-strong);
+  --destructive: var(--danger);
+  --border: var(--border-default);
+  --input: var(--border-strong);
+  --ring: var(--focus-ring);
+  --focus-halo: rgba(110, 114, 104, 0.18);
+  --approved-fg: var(--state-ink);
+  --approved-bg: var(--lime-wash);
+  --accent-hover: #B6E22C;
+  --tdr-shadow-overlay: 0 12px 32px -8px rgba(18, 20, 15, 0.22), 0 2px 6px rgba(18, 20, 15, 0.08);
+  --tdr-shadow-popover: 0 6px 18px -6px rgba(18, 20, 15, 0.18);
+  --radius: var(--tdr-radius-md);
+}
+
+/* Superfícies inversas derivadas da escala de tinta do kit. */
+.dark {
+  color-scheme: dark;
+  --background: var(--ink-900);
+  --foreground: var(--brand-paper);
+  --card: var(--ink-800);
+  --card-foreground: var(--ink-200);
+  --popover: var(--ink-800);
+  --popover-foreground: var(--brand-paper);
+  --primary: var(--brand-paper);
+  --primary-foreground: var(--brand-ink);
+  --primary-hover: var(--n-200);
+  --secondary: var(--ink-700);
+  --secondary-foreground: var(--brand-paper);
+  --muted: var(--ink-700);
+  --muted-foreground: var(--ink-200);
+  --accent: var(--ink-700);
+  --accent-foreground: var(--brand-paper);
+  --border: var(--border-inverse);
+  --input: var(--ink-300);
+  --ring: var(--ink-300);
+  --text-body: var(--ink-200);
+  --text-meta: var(--ink-200);
+  --text-strong: var(--brand-paper);
+  --approved-fg: var(--brand-lime);
+  --destructive: #F2A28F;
+}
+
+@layer base {
+  * { @apply border-border; }
+  html { @apply font-sans; scroll-behavior: smooth; }
+  body { @apply bg-background text-body; }
+  h1, h2, h3, h4 { @apply font-heading text-foreground; }
+  :focus-visible { outline: 2px solid var(--ring); outline-offset: 3px; }
+  ::selection { background: var(--brand-lime); color: var(--brand-ink); }
+}
+
+@layer components {
+  .tdr-container { width: 100%; max-width: var(--page-max); margin-inline: auto; padding-inline: var(--page-pad); }
+  .tdr-section { padding-block: var(--gutter-section); }
+  .tdr-display { font-family: var(--font-space-grotesk); font-size: var(--text-d1-size); line-height: var(--text-d1-lh); letter-spacing: var(--text-d1-ls); font-weight: var(--text-d1-weight); }
+  .tdr-title { font-family: var(--font-space-grotesk); font-size: var(--text-h1-size); line-height: var(--text-h1-lh); letter-spacing: var(--text-h1-ls); font-weight: var(--text-h1-weight); }
+  .tdr-body { font-size: var(--text-body-size); line-height: var(--text-body-lh); max-width: var(--measure-body); }
+  .tdr-label { font-family: var(--font-ibm-plex-mono); font-size: var(--text-label-size); line-height: var(--text-label-lh); letter-spacing: var(--text-label-ls); text-transform: uppercase; }
+  .tdr-button { cursor: pointer; transition: background-color var(--duration-fast) var(--ease-out), border-color var(--duration-fast) var(--ease-out), color var(--duration-fast) var(--ease-out); }
+  .tdr-button:disabled, .tdr-button[data-disabled] { cursor: not-allowed; opacity: 0.42; }
+  .tdr-button:focus-visible, [data-slot="input"]:focus-visible { outline: none; border-color: var(--ring); box-shadow: 0 0 0 3px var(--focus-halo); }
+  .tdr-nav-link { display: inline-flex; min-height: var(--hit-min); align-items: center; border-bottom: 2px solid transparent; font-size: var(--text-ui-size); }
+  .tdr-nav-link[aria-current="page"] { border-bottom-color: var(--brand-sage); color: var(--foreground); }
+  .tdr-nav-link:hover { color: var(--foreground); }
+}
+
+@media (max-width: 640px) {
+  :root { --page-pad: 24px; --gutter-section: 48px; }
+  .tdr-display { font-size: 40px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; transition-duration: 0.01ms !important; scroll-behavior: auto !important; }
+}

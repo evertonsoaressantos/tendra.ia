@@ -1,0 +1,19 @@
+{
+  "source": "https://drive.google.com/file/d/14mWKEAh7zYqSZoOoyswsoZhzAroLt1v_/view",
+  "retrieved": "2026-09-29",
+  "sha256": "200770f0b6b375f1494e6dda792324cc99fe8e5514a70bc762bb971cd3ea7b9c",
+  "tokens": {
+    "typography.css": "3435a58ce3c2295b6d2f31a202dee232c6bbae82be6a24e3a54b7333be899767",
+    "spacing.css": "cb030557d3141cfff3fb69217eee757a875fe89174aef564a5a002036e9981bc",
+    "colors.css": "91a1d4bb630a4018aede3316e1acd265799630f4f6a99ccd2c4039da9bb2b84c",
+    "elevation.css": "ba798e6004f4ab819eda7d92375290f4236a8704248c3d7edc828040bd2bb23e",
+    "radii.css": "086664db159430ee6e05050fc9a02f782dd36ac33306f671d845df5e6426a635",
+    "fonts.css": "daa621bca958afae3358213050d6d71a1b2e84acfa5572b3eb10be69db5b062f",
+    "motion.css": "a251682ab70dea6004aaf77a5528421c9294622435a0e01db48ba97c4161e451"
+  },
+  "adaptations": [
+    "Fontes carregadas por next/font/google",
+    "Prefixo --tdr-radius-* para evitar colisão com Tailwind",
+    "Tokens de marca preservados; aliases shadcn definidos em globals.css"
+  ]
+}
