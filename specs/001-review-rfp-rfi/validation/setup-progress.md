@@ -7,6 +7,7 @@
 - T003: configuração validada, modo fixture padrão, credenciais por role, erros sem valores sensíveis e `.env.example` sem segredos.
 - T004: suites configuradas, PostgreSQL/pgvector descartável por tmpfs em `infra/compose.test.yaml`, guard de URL local e 2 testes reais de conexão/extensão aprovados. A suite de integração foi ligada à CI.
 - T005: Supabase CLI 2.119.0 fixada; configuração local mantém PostgreSQL/pgvector, Auth, Storage, API e Mailpit. `npm run test:services` passou com usuário e bucket privados sintéticos. A imagem web Node 24 fixada por digest construiu, ficou `healthy` e respondeu HTTP 200 na home e em `/design-system`. Da web, Auth e Storage retornaram HTTP 200 e a porta PostgreSQL ficou acessível. A imagem de ferramentas do worker construiu com LibreOffice, Tesseract eng/por, fontes e canvas em versões fixadas e passou sem rede. ClamAV oficial 1.4.6 fixado por digest ficou `healthy` em rede interna sem portas publicadas e varreu `/etc/hosts` com resultado limpo. O consumer real da fila continua na T021; a execução segura de parsers e a política de atualização/bloqueio das assinaturas continuam na T053.
+- T006: workflow publicado e executado para push e PR. `quality` e `infrastructure` passaram em ambos os runs do commit `0df48b9`. `main` exige esses dois checks, com branch protection verificada pela API; ver [ci.md](ci.md).
 
 ## Verificações executadas
 
@@ -15,10 +16,9 @@
 - Lint, TypeScript e build de produção passaram após alterações.
 - `git diff --check` passou.
 
-## Parcial, não marcado como concluído
+## Verificações futuras
 
 - E2E e contratos aguardam implementação das jornadas; o runner está configurado e não declara suite vazia como aprovada.
-- T006: CI configurada para as suites disponíveis e smoke da infraestrutura, mas ainda não executada no GitHub. A proteção de `main` e os rulesets retornam HTTP 403 no repositório privado com o plano atual; ver [ci.md](ci.md). Nenhuma suite vazia foi declarada aprovada.
 
 ## Ambiente de containers desbloqueado — 2026-10-01
 

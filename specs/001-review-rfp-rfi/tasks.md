@@ -36,7 +36,7 @@ Os campos/restrições do modelo são reproduzidos literalmente nas tarefas de s
 
 
 
-- [ ] T006 Configurar `.github/workflows/ci.yml` desde o início com lint/typecheck/build e suites disponíveis, imagens fixadas e dados sintéticos; adicionar cada suite unit/integration/contract/E2E/evals-fixture à CI na tarefa que a cria, sem silenciar falhas ou declarar suite inexistente como aprovada. Execução provider é gate separado; checks obrigatórios bloqueiam merge/deploy e a configuração de proteção deve ser verificada antes da primeira integração. Depende: T005.
+- [X] T006 Configurar `.github/workflows/ci.yml` desde o início com lint/typecheck/build e suites disponíveis, imagens fixadas e dados sintéticos; adicionar cada suite unit/integration/contract/E2E/evals-fixture à CI na tarefa que a cria, sem silenciar falhas ou declarar suite inexistente como aprovada. Execução provider é gate separado; checks obrigatórios bloqueiam merge/deploy e a configuração de proteção deve ser verificada antes da primeira integração. Depende: T005.
 
 ## Phase 2: Foundational — segurança, dados compartilhados e execução durável
 
