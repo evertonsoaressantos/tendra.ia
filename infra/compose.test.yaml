@@ -1,0 +1,18 @@
+name: tendra-test
+
+services:
+  postgres:
+    image: pgvector/pgvector@sha256:cf134a767f474095eeba57e0117be8e568e011a63f33fbf252f14c9b760f8e6f
+    environment:
+      POSTGRES_USER: tendra_test
+      POSTGRES_PASSWORD: tendra_test_local_only
+      POSTGRES_DB: tendra_test_pilot
+    ports:
+      - "127.0.0.1:55432:5432"
+    tmpfs:
+      - /var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U tendra_test -d tendra_test_pilot"]
+      interval: 2s
+      timeout: 2s
+      retries: 30
