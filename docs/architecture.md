@@ -36,9 +36,10 @@ organizar regras por domínio e manter detalhes de provedores isolados.
 O catálogo `/design-system` atende à fase atual. Storybook pode ser adicionado
 no mesmo repositório quando a variedade de estados, colaboração ou testes
 visuais justificar. Extrair uma biblioteca de UI apenas quando houver outro
-consumidor real. O destino escolhido para o código é um repositório privado
-no GitHub: `evertonsoaressantos/tendra.ia`. O repositório foi criado como privado;
-a publicação inicial do código é realizada pelo Git com a branch `main`.
+consumidor real. O código está no repositório público
+`evertonsoaressantos/tendra.ia`, com `main` protegida por checks obrigatórios.
+As fontes do design system ficam versionadas em `src/fonts`, evitando acesso à
+rede durante o build da aplicação.
 
 Começar com frontend e backend no mesmo projeto. Criar serviços separados apenas
 quando tarefas demoradas, dependências específicas ou escala justificarem.

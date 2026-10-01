@@ -37,8 +37,9 @@ rotacionar, aplicar gradiente ou sombra. Usar variantes claras/escuras adequadas
 - `src/styles/tokens.css`: valores do pacote, com referências de origem.
 - `src/app/globals.css`: aliases semânticos do shadcn, integração com Tailwind,
   estados inversos, utilitários de layout e redução de movimento.
-- `src/app/layout.tsx`: fontes oficiais via `next/font/google`, hospedadas junto
-  ao app após o build. O navegador não precisa solicitar fontes ao Google.
+- `src/app/layout.tsx`: fontes oficiais Space Grotesk, IBM Plex Sans e IBM Plex
+  Mono via `next/font/local`, com arquivos Latin e licenças OFL em `src/fonts`.
+  São hospedadas junto ao app sem depender do Google durante o build ou no navegador.
 - `src/components/ui`: componentes shadcn adaptados à marca, mantendo Base UI
   onde há comportamento interativo.
 - `src/components/brand`: Logo, MonoLabel e SourceTrail.
