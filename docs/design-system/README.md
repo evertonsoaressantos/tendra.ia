@@ -37,8 +37,9 @@ rotacionar, aplicar gradiente ou sombra. Usar variantes claras/escuras adequadas
 - `src/styles/tokens.css`: valores do pacote, com referências de origem.
 - `src/app/globals.css`: aliases semânticos do shadcn, integração com Tailwind,
   estados inversos, utilitários de layout e redução de movimento.
-- `src/app/layout.tsx`: fontes oficiais via `next/font/google`, hospedadas junto
-  ao app após o build. O navegador não precisa solicitar fontes ao Google.
+- `src/app/layout.tsx`: fontes oficiais Space Grotesk, IBM Plex Sans e IBM Plex
+  Mono via `next/font/local`, com arquivos Latin e licenças OFL em `src/fonts`.
+  São hospedadas junto ao app sem depender do Google durante o build ou no navegador.
 - `src/components/ui`: componentes shadcn adaptados à marca, mantendo Base UI
   onde há comportamento interativo.
 - `src/components/brand`: Logo, MonoLabel e SourceTrail.
@@ -97,3 +98,28 @@ rótulos aproximados do guia):
 Isso verifica os pares de texto listados; não é uma auditoria completa de
 acessibilidade. Tema inverso demonstrado no catálogo; preferência global de
 tema e persistência não foram incluídas nesta etapa.
+
+## Integração planejada do MVP — 30/09/2026
+
+O [plano do MVP](../../specs/001-review-rfp-rfi/plan.md) mantém os componentes e tokens
+atuais. Componentes específicos de revisão, fontes e conferência OCR ficam em
+`src/components/features`; padrões reutilizáveis continuam em `src/components/ui` e
+são demonstrados em `/design-system`. Não introduzir biblioteca visual paralela.
+
+Planejar estados de salvamento, exclusividade de edição, alertas individuais,
+fontes indisponíveis/antigas/sem data e texto OCR aguardando conferência. Alertas
+combinam texto/ícone com cor; navegação por teclado, foco restaurado ao fechar a fonte
+e anúncios de estado fazem parte da aceitação. O editor limita formatação a texto,
+negrito, itálico e listas. A visualização Office deve dizer “prévia convertida”.
+
+A área de trabalho de revisão usa split view em ≥1280 px, sequência lista/detalhe em
+768–1279 px e consulta abaixo de 768 px, conforme spec. A largura máxima de 1160 px
+continua padrão de páginas gerais; a tela de revisão pode ocupar a largura disponível
+para acomodar os painéis, reutilizando espaçamentos/tokens. Validar o layout com
+usuários e testes de acessibilidade antes de afirmar atendimento WCAG 2.2 AA.
+
+Estas são decisões de implementação futura, sem alteração visual nesta etapa.
+
+## Diretriz confirmada para implementação
+
+Por instrução do usuário, toda interface e front-end devem seguir rigorosamente este design system. Primeiro reutilizar os componentes existentes; quando faltar um componente, buscar no shadcn usando a configuração `base-nova`/Base UI de `components.json`, adaptar à identidade e adicionar ao catálogo. Não introduzir estilos, bibliotecas ou propostas visuais fora da consistência do projeto. Esta regra vale também para login, administração, estados vazios, erros e telas operacionais do MVP.

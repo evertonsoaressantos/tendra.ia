@@ -1,0 +1,29 @@
+FROM node:24-bookworm-slim@sha256:0e0ff40c39bc087845bfb27465a0df4ea419520094bc35842ff83dd8cbe6f9b6 AS dependencies
+WORKDIR /app
+COPY package.json package-lock.json ./
+RUN npm ci --omit=dev
+
+FROM node:24-bookworm-slim@sha256:0e0ff40c39bc087845bfb27465a0df4ea419520094bc35842ff83dd8cbe6f9b6 AS runtime
+ENV NODE_ENV=production
+WORKDIR /app
+RUN apt-get update \
+    && DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends \
+      ca-certificates=20250419~deb12u1 \
+      fontconfig=2.14.1-4 \
+      fonts-dejavu-core=2.37-6 \
+      fonts-liberation=1:1.07.4-11 \
+      fonts-crosextra-carlito=20220224-1 \
+      libreoffice-calc=4:7.4.7-1+deb12u14 \
+      libreoffice-impress=4:7.4.7-1+deb12u14 \
+      libreoffice-writer=4:7.4.7-1+deb12u14 \
+      tesseract-ocr=5.3.0-2 \
+      tesseract-ocr-eng=1:4.1.0-2 \
+      tesseract-ocr-por=1:4.1.0-2 \
+    && rm -rf /var/lib/apt/lists/*
+COPY --from=dependencies /app/node_modules ./node_modules
+COPY package.json ./package.json
+COPY scripts/check-worker-tools.mjs ./scripts/check-worker-tools.mjs
+COPY src ./src
+USER node
+# T021 replaces this setup probe with the durable Graphile Worker entrypoint.
+CMD ["node", "scripts/check-worker-tools.mjs"]

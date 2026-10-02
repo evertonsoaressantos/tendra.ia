@@ -1,0 +1,37 @@
+name: tendra-local
+
+services:
+  web:
+    build:
+      context: ..
+      dockerfile: infra/Dockerfile.web
+    ports:
+      - "127.0.0.1:3000:3000"
+    environment:
+      AI_MODE: fixture
+      APP_ORIGIN: http://127.0.0.1:3000
+      SUPABASE_URL: http://host.docker.internal:54321
+      SUPABASE_PUBLISHABLE_KEY: ${SUPABASE_PUBLISHABLE_KEY:-}
+      DATABASE_URL_APP: ${DATABASE_URL_APP:-}
+    networks:
+      - app
+
+  # This one-shot check stays offline. T021 supplies the queue consumer entrypoint.
+  worker-tools:
+    profiles: [tools]
+    build:
+      context: ..
+      dockerfile: infra/Dockerfile.worker
+    network_mode: none
+
+  clamav:
+    profiles: [scan]
+    image: clamav/clamav-debian@sha256:6d0680780fd29855cb7018f68272cb520821f614259e2066f8ec669069ac91b3
+    networks:
+      - scanner
+    # The image supplies a clamdcheck.sh healthcheck; no scanner port is published.
+
+networks:
+  app: {}
+  scanner:
+    internal: true

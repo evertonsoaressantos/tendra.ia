@@ -20,3 +20,11 @@ This block is written and re-added by `next dev` — verify at `node_modules/nex
   colaboração ou testes visuais justificar.
 - Consultar `docs/architecture.md` e `docs/design-system/README.md` antes de
   mudanças estruturais ou visuais. Registrar novas decisões nesses documentos.
+
+## Consistência obrigatória de interface
+
+- Seguir rigorosamente o design system da Tendra.ai em toda interface e front-end.
+- Antes de criar UI, procurar componentes existentes em `src/components/ui` e os exemplos em `/design-system`.
+- Quando faltar um componente, buscar no shadcn, mantendo o preset Base UI/base-nova do projeto, e adaptar aos tokens, tipografia, cores, espaçamentos e estados existentes.
+- Não introduzir bibliotecas visuais paralelas, estilos isolados ou propostas que quebrem a consistência visual do projeto.
+- Registrar componentes reutilizáveis novos no catálogo e validar acessibilidade e estados sem alterar a identidade visual.

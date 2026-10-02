@@ -39,3 +39,12 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# MVP tooling and local secrets
+!.env.example
+/dist/
+/playwright-report/
+/test-results/
+*.log
+/supabase/.temp/
+/supabase/.branches/
